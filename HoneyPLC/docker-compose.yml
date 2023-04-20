@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  honeyplc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      iot:
+        ipv4_address: 192.168.0.2
+
+networks:
+  iot:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1
+
